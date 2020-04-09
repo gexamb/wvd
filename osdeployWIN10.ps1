@@ -84,12 +84,12 @@ $Action= New-ScheduledTaskAction -Execute "shutdown" -Argument "-f -r -t 0"
 Register-ScheduledTask -TaskName "IT\ScheduleReboot" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest –Force
 
 ##Disable unnecessary scheduled tasks
-#Write-Host "* Disabling unused scheduled tasks" -ForegroundColor Green
-#Get-ScheduledTask -TaskPath "\Microsoft\XblGameSave\" | Disable-ScheduledTask
+Write-Host "* Disabling unused scheduled tasks" -ForegroundColor Green
+Get-ScheduledTask -TaskPath "\Microsoft\XblGameSave\" | Disable-ScheduledTask
 
 ##Clear all event logs
-Write-Host "* Clearing all existing Event Viewer logs" -ForegroundColor Green
-wevtutil el | Foreach-Object {wevtutil cl “$_”}
+#Write-Host "* Clearing all existing Event Viewer logs" -ForegroundColor Green
+#wevtutil el | Foreach-Object {wevtutil cl “$_”}
 
 ##Windows Update Settings
 Write-Host "* Customizing Windows Update settings" -ForegroundColor Green
