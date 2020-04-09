@@ -39,6 +39,8 @@ Enable-NetFirewallRule -DisplayGroup “Remote Desktop”
 Write-Host "* Create new local admin account - IT-Admin" -ForegroundColor Green
 New-LocalUser -Name "IT-Admin" -Description "IT Local Administrator" -AccountNeverExpires -NoPassword
 Add-LocalGroupMember -Group "Administrators" -Member "IT-Admin"
+New-LocalUser -Name "thinadmin" -Description "Temporary admin for app installations" -AccountNeverExpires -NoPassword
+Add-LocalGroupMember -Group "Administrators" -Member "thinadmin"
 
 ##Adding domain admin groups
 Write-Host "* Adding CSUN domain administrator groups to local Adminstrators group" -ForegroundColor Green
